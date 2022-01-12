@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Quick Start - Leaflet</title>
+
+	<link rel="stylesheet" href="leaflet.css" />
+	<script src="leaflet.js"></script>
+
+	
+</head>
+<body>
+
+
+<div id="mapid" style="width: 1200px; height: 800px;"></div>
+<script>
+
+	var mymap = L.map('mapid').setView([33.939006, -6.886224], 18);
+
+	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+	}).addTo(mymap);
+
+	L.marker([31.86731279625083, -6.940603260251807]).addTo(mymap)
+		.bindPopup("Bonjour ici c'est tanant :-) ");
+
+	L.circle([31.86731279625083, -6.940603260251807], 500, {
+		color: 'black',
+		fillColor: '#bcbddc',
+		fillOpacity: 0.5
+	}).addTo(mymap).bindPopup("I am a circle.");
+
+	L.polygon([
+		[33.976811, -6.867390],
+		[33.976675064458576, -6.86716523775206],
+		[33.97675154079004, -6.86708345611564],
+		[33.97672412475458, -6.867036475175571],
+		[33.976722681805114, -6.8670329951059355],
+		[33.97680060104193, -6.866956433573969],
+		[33.97674144014642, -6.866871171867914],
+		[33.976819359366054, -6.866789390231496],
+		[33.976696708710314, -6.866599726436396],
+		[33.976457178684186, -6.866674547933546],
+		[33.97642309316763, -6.866646487085359],
+		[33.976310320622396, -6.866755511659008],
+		[33.97642241682942, -6.866939687396536],
+		[33.97639229098832, -6.866973481109843],
+		[33.976360856505416, -6.8669357363976635],
+		[33.97618653086731, -6.867098653795575],
+		[33.97632308597779, -6.86731062159628],
+		[33.976498864041815, -6.8671371933957035],
+		[33.976742918933105, -6.867473538996823]
+
+		
+	
+	], {
+		color: 'red',
+		fillColor: '#fdae6b',
+		fillOpacity: 0.5
+	}).addTo(mymap).bindPopup("Departement topo");
+
+
+	var popup = L.popup();
+
+	function onMapClick(e) {
+		popup
+			.setLatLng(e.latlng)
+			.setContent("You clicked the map at " + e.latlng.toString())
+			.openOn(mymap);
+	}
+
+	mymap.on('click', onMapClick);
+
+</script>
+
+
+
+</body>
+</html>
